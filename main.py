@@ -2,6 +2,12 @@ import time
 
 currentTime = time.localtime();
 
+myDict = {
+    "name": "Victor",
+    "profession": "student",
+    "dob": "09-23-2003"
+}
+
 def square(x):
     return x * x
 
