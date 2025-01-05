@@ -8,6 +8,17 @@ def main():
     # lists support indexing/slicing, sets don't
     print(myList[3])
 
+    # using for item in list
+    fruits = ['apple', 'banana', 'cherry']
+    for item in fruits:
+        item = item.upper()  # this doesn't modify the original list
+    print(fruits)  # still apple, banana, cherry
+
+    # using for i in range(len(list))
+    for i in range(len(fruits)):
+        fruits[i] = fruits[i].upper()  # this DOES modify the list
+    print(fruits)  # prints ['APPLE', 'BANANA', 'CHERRY']
+
     # see if an element is in a set O(1)
     print(7 in mySet)
 
