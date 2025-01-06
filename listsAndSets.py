@@ -3,6 +3,9 @@
 
 myList = [1, 5, 4, 3, 2]
 mySet = {10, 10, 7, 9, 8, 6}
+mySet2 = {"bob", "cat", "moose"}
+mySet3 = {1, 2, 3}  
+mySet4 = {3, 4, 5}
 
 def main():
     # lists support indexing/slicing, sets don't
@@ -47,10 +50,14 @@ def main():
     print("Using the pop method, we removed", mySet.pop())
 
     # clear empties the set
+    print(mySet2)
+    mySet2.clear()
+    print(mySet2)
     # del deletes the set completely
-
     # union() and update() methods joins all items from both sets.
     # intersection() method keeps ONLY the duplicates.
+    mySet5 = mySet3.union(mySet4)
+    print(mySet5)
     # difference() method keeps the items from the first set that are not in the other set(s).
     # symmetric_difference() method keeps all items EXCEPT the duplicates.
 
