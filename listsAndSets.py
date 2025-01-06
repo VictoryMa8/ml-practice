@@ -4,8 +4,6 @@
 myList = [1, 5, 4, 3, 2]
 mySet = {10, 10, 7, 9, 8, 6}
 mySet2 = {"bob", "cat", "moose"}
-mySet3 = {1, 2, 3}  
-mySet4 = {3, 4, 5}
 
 def main():
     # lists support indexing/slicing, sets don't
@@ -53,13 +51,18 @@ def main():
     print(mySet2)
     mySet2.clear()
     print(mySet2)
+
+    mySet3 = {1, 2, 3}  
+    mySet4 = {3, 4, 5}
     # del deletes the set completely
     # union() and update() methods joins all items from both sets.
+    print(mySet3.union(mySet4))
     # intersection() method keeps ONLY the duplicates.
-    mySet5 = mySet3.union(mySet4)
-    print(mySet5)
+    print(mySet3.intersection(mySet4))
     # difference() method keeps the items from the first set that are not in the other set(s).
+    print(mySet3.difference(mySet4))
     # symmetric_difference() method keeps all items EXCEPT the duplicates.
+    print(mySet3.symmetric_difference(mySet4))
 
     # all methods
     # https://www.w3schools.com/python/python_sets_methods.asp
