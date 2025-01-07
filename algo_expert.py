@@ -1,3 +1,9 @@
+class Tree:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
 def twoNumberSum(array, targetSum):
     # make a set out of the array O(n)
     mySet = set(array)
@@ -91,7 +97,7 @@ def findClosestValueInBst(tree, target):
         # if current node is closer to target, closest = current
         elif abs(target - tree.value) < abs(target - closest):
             closest = tree.value
-            
+
         # otherwise, if current is greater than target,
         # we know to only look at the left side,
         # because the nodes to the right of current
@@ -103,6 +109,24 @@ def findClosestValueInBst(tree, target):
             tree = tree.right
             
     return closest
+
+def branchSums(root):
+    # if tree is empty
+    if root is None:
+        return []
+
+    # recursive calls
+    left = branchSums(root.left)
+    right = branchSums(root.right)
+    
+    branch = left + right
+
+    if branch:
+        return [i + root.value for i in branch]
+    else:
+        return [root.value]
+    
+
 
 def main():
     print("Hello")
