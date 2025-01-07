@@ -64,5 +64,13 @@ def main():
     for i in myDict:
         print("Item:", i, myDict[i])
 
+    # setdefault returns the value of the specified key
+    # if the key does not exist, then insert the key with the specified value
+
+    x = myDict.setdefault("major", "Computer Science")
+    print(x)
+
+    # all methods: https://www.w3schools.com/python/python_dictionaries_methods.asp
+
 if __name__ == "__main__":
     main()
