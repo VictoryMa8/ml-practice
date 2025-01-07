@@ -15,6 +15,10 @@ def main():
         item = item.upper()  # this doesn't modify the original list
     print(fruits)  # still apple, banana, cherry
 
+    # create a list with elements like this
+    coolList = [i*i for i in range(10)]
+    print("coolList:", coolList)
+
     # using for i in range(len(list))
     for i in range(len(fruits)):
         fruits[i] = fruits[i].upper()  # this DOES modify the list
