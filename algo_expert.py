@@ -36,6 +36,8 @@ def isValidSubsequence(array, sequence):
     else:
         return False
     
+# make a list that contains the squared elements of the original list
+    
 def sortedSquaredArray(array):
     # create copy of array
     copy = array
@@ -45,6 +47,11 @@ def sortedSquaredArray(array):
         copy[i] = copy[i] * copy[i]
     copy.sort()
     return copy
+
+# there is a list of 'games played', that contains lists of 2 elements (the two teams) - team[0] is home, team[1] away
+# results is a list of the outcome, where results[0] shows the result of competitions[0]
+# if it is 1, the home team won, 0 the away team won
+# using a dictionary to keep track of teams with points, we iterate through each list to find the tournament winner
 
 def tournamentWinner(competitions, results):
     myDict = {} # create dict of teams
@@ -67,6 +74,11 @@ def tournamentWinner(competitions, results):
             tourneyResult = i
     return tourneyResult
 
+# we are trying to flip a matrix, so the original number of rows becomes the number of columns
+# and the original number of columns becomes the number of rows
+# we create a list of lists of length m, the number of original rows
+# and height n, the number of original columns
+
 def transposeMatrix(matrix):
 
     # the number of rows becomes the number of columns of copy
@@ -84,6 +96,12 @@ def transposeMatrix(matrix):
             copy[j][i] = matrix[i][j]
             
     return copy
+
+# we are trying to find the closest value to target in the tree
+# we first make the root node the temporary 'closest' to target
+# we go through the tree to check if the current node is closer than 'closest'
+# if not, then if current is > than target, we know that everything to the right is also > in difference
+# so we check the left, or vice versa
 
 def findClosestValueInBst(tree, target):
     # tree is the current node
@@ -110,7 +128,12 @@ def findClosestValueInBst(tree, target):
             
     return closest
 
+# we are trying to get the sum of all 'branches'
+# a branch is the path to any leaf node
+# we go through all possible 'paths', adding the value of each node together
+
 def branchSums(root):
+
     # if tree is empty
     if root is None:
         return []
@@ -125,8 +148,40 @@ def branchSums(root):
         return [i + root.value for i in branch]
     else:
         return [root.value]
-    
 
+# we are trying to find 'depth' (how far down) each node is, and sum it all up
+# for example, the root node has a depth of 0, and its children have depths of 1
+# if we have a small tree with a root node and two leaf nodes, we have a total of 2
+
+def nodeDepths(root):
+    # using DFS to traverse through the tree
+    # create stack, add root node
+    stack = [root]
+
+    # create list with the sum depth at each level
+    nodeDepthSum = [0]
+
+    result = 0
+
+    # while stuff is still in stack
+    while len(stack) > 0:
+        curr = stack.pop()
+        currRowSum = nodeDepthSum.pop()
+    
+        # add current row's depth sum to result
+        result += currRowSum
+
+        # if there is a node to the right, put it in the stack
+        if curr.right is not None:
+            stack.append(curr.right)
+            nodeDepthSum.append(currRowSum + 1)
+            
+        # same with left
+        if curr.left is not None:
+            stack.append(curr.left)
+            nodeDepthSum.append(currRowSum + 1)        
+    
+    return result
 
 def main():
     print("Hello")
