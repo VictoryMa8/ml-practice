@@ -231,6 +231,27 @@ def nodeDepths(root):
     
     return result
 
+# we are given a list of queries, with the execution time of items
+# the wait time is determined by the execution time of the previous items, find the minimum total wait time
+# for example queries = [5, 6, 7, 8], queries[1] has a wait time of 5, queries[2] has a wait time of 11
+def minimumWaitingTime(queries):
+    # order the array to maximize efficiency
+    # now the longest wait time is at the end
+    queries.sort()
+    # initalize a total for wait times
+    total = 0
+    # initialize a wait time to assign each query
+    wait = 0
+    for i in range(len(queries)):
+        # first query has a wait time of 0
+        if i > 0:
+            # the wait time for a query is the total value of all prev queries
+            wait += queries[i-1]
+            # after figuring that out for each item, add it to the total
+            total += wait
+
+    return total
+
 # there are two lists to represent the rows of students
 # every student of the same color is in one row, the list contains the heights of these students
 # see if we are able to get a picture of all students so that a student in the front isn't blocking anyone
