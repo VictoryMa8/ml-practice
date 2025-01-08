@@ -231,6 +231,31 @@ def nodeDepths(root):
     
     return result
 
+# there are two lists to represent the rows of students
+# every student of the same color is in one row, the list contains the heights of these students
+# see if we are able to get a picture of all students so that a student in the front isn't blocking anyone
+def classPhotos(redShirtHeights, blueShirtHeights):
+    # sort rows to ensure tallest is behind tallest of each row
+    redShirtHeights.sort()
+    blueShirtHeights.sort()
+    # for now we assume that its possible that any student in the front
+    # is shorter than the person behind them
+    blueFront = True
+    redFront = True
+    # we just dont know which row is in the front, so we iterate
+    for i in range(len(redShirtHeights)):
+        # if at any point a red shirt is taller than a blue shirt,
+        # we flag a red front as impossible
+        if redShirtHeights[i] >= blueShirtHeights[i]:
+            redFront = False
+        # same goes for a blue front
+        if blueShirtHeights[i] >= redShirtHeights[i]:
+            blueFront = False
+    # if we can achieve any front, we have a valid group of students
+    if redFront or blueFront:
+        return True
+    return False
+
 def main():
     print("Hello")
 
