@@ -277,6 +277,67 @@ def classPhotos(redShirtHeights, blueShirtHeights):
         return True
     return False
 
+# a tandem bike has two pedalers, the fastest pedaler determines the overall speed of the bike
+# pair the cyclers so that we get either the fastest possible speed or slowest possible speed
+# we sort the cyclers, if we want fastest speed, we pair the slow ones with the fastest ones
+# if we want the slowest, we pair the slowest with the slowest
+# that way if we avoid something like (1, 10) = 10, 9 extra speed compared to if we couldve done (1,1) = 1
+def tandemBicycle(redShirtSpeeds, blueShirtSpeeds, fastest):
+    # sort both lists
+    redShirtSpeeds.sort()
+    blueShirtSpeeds.sort()
+    # if we want the fastest, we should pair the slowest with the fastest
+    # that way the bicycle achieves max speed
+    if fastest:
+        blueShirtSpeeds.reverse()
+    # if we want the slowest, we pair the slowest with the slowest
+    maxSpeed = 0
+    for i in range(len(redShirtSpeeds)):
+        maxSpeed += max(redShirtSpeeds[i], blueShirtSpeeds[i])
+    return maxSpeed
+
+# will write more detailed explanation later
+def optimalFreelancing(jobs):
+
+    # if no jobs, return 0
+    if len(jobs) == 0:
+        return 0
+
+    # track max profit
+    maxProfit = 0
+    # start from day 7
+    numberOfDays = 7
+
+    # iterate through the week, starting at day 7
+    while numberOfDays > 0:
+
+        # initialize best pay for the current day
+        currentDayMaxPayment = 0
+        # record the index of the job
+        indexToRemove = None
+
+        # iterate through jobs
+        for i, job in enumerate(jobs):
+            # if a job's deadline is greater than or equal to current day
+            if job["deadline"] >= numberOfDays:
+                # if the payment is better than current max for the day
+                if job["payment"] > currentDayMaxPayment:
+                    # make it the max
+                    currentDayMaxPayment = job["payment"]
+                    # record its index
+                    indexToRemove = i
+
+        # remove the item at index
+        # add to the max profit achievable 
+        if indexToRemove is not None:
+            jobs.pop(indexToRemove)
+            maxProfit += currentDayMaxPayment
+
+        # go to the next day
+        numberOfDays -= 1
+    
+    return maxProfit
+
 def main():
     print("Hello")
 
