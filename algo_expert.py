@@ -1,8 +1,15 @@
+# this is a tree class
 class Tree:
     def __init__(self, value):
         self.value = value
         self.left = None
         self.right = None
+
+# go through an array, if we are able to find two numbers that reach the target, return them in a list
+# for time complexity sake, use a set to record all numbers in the list
+# then, iterate through the list, make note of (target - currentNumber)
+# if this number is seen in the set, then we have two numbers that we can add to reach target
+# also make sure that it's not just the same number twice
 
 def twoNumberSum(array, targetSum):
     # make a set out of the array O(n)
@@ -17,6 +24,14 @@ def twoNumberSum(array, targetSum):
             return [i, diff] # O(1)
     # if can't reach targetSum, return empty array
     return []
+
+# go through an array to find a valid 'subsequence'
+# we are given a larger array, and a smaller array called sequence
+# if we can find sequence in the same exact order in the larger array, it's valid
+# for example, [1, 2, 3, 4, 5] and [1, 5]
+# 1 and 5 are in the same order they appear in the larger array, so its valid
+# iterate through larger array, and only push through sequence if we see the next element
+# see if we reach the end, if yes, then True
 
 def isValidSubsequence(array, sequence):
     # track how far we've gone in sequence
