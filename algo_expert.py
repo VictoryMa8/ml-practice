@@ -5,6 +5,39 @@ class Tree:
         self.left = None
         self.right = None
 
+class Node:
+    def __init__(self, name):
+        self.children = []
+        self.name = name
+
+    def addChild(self, name):
+        self.children.append(Node(name))
+        return self
+
+    # simple depth first search (go down as far as we can on the tree before we go back up)
+    # visit every node in the tree
+    # we use a stack to achieve this
+    def depthFirstSearch(self, array):
+
+        # create stack, add root node
+        to_visit = [self]
+        
+        # while stuff is still in to_visit
+        while len(to_visit) > 0:
+    
+            # take an element out of to_visit, name it curr, and
+            # add it to array
+            curr = to_visit.pop()
+            array.append(curr.name)
+
+            # iterate through all children, add them to to_visit
+            # also children needs to be reversed
+            # (that way we go left to right)
+            for i in curr.children[::-1]:
+                to_visit.append(i)
+        
+        return array
+
 # go through an array, if we are able to find two numbers that reach the target, return them in a list
 # for time complexity sake, use a set to record all numbers in the list
 # then, iterate through the list, make note of (target - currentNumber)
