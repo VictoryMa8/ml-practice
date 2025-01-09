@@ -89,6 +89,21 @@ def binarySearch(array, target):
             right = middle - 1
     return -1
 
+# will explain later
+def findThreeLargestNumbers(array):
+    max1 = max2 = max3 = -999
+    for i in range(len(array)):
+        if array[i] > max3:
+            max1 = max2
+            max2 = max3
+            max3 = array[i]
+        elif array[i] > max2:
+            max1 = max2
+            max2 = array[i]
+        elif array[i] > max1:
+            max1 = array[i]
+    return [max1, max2, max3]
+
 def main():
     print("Hello")
 
