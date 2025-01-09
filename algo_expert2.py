@@ -52,6 +52,21 @@ def getNthFib(n):
 
     return x
 
+# will add more comments later
+def productSumHelper(array, depth):
+    sum = 0
+    for i in array:
+        if type(i) == int:
+            sum += depth * i
+        elif type(i) == list:
+            sum += depth * productSumHelper(i, depth + 1)
+        else:
+            print("Not valid type")
+    return sum
+
+def productSum(array):
+    return productSumHelper(array, 1)
+
 def main():
     print("Hello")
 
