@@ -67,18 +67,24 @@ def productSumHelper(array, depth):
 def productSum(array):
     return productSumHelper(array, 1)
 
-# add comments later
+# in a sorted array, binary search eliminates half the array at a time to find a target
 def binarySearch(array, target):
 
+    # establish window (left most item 0, right most is last index)
     left = 0
     right = len(array) - 1
     
+    # while we have space to search
     while left <= right:
+        # middle is self explanatory
         middle = (left + right) // 2
         if array[middle] == target:
+        # if we're looking at the target, retrn it
             return middle
+        # if the target is to the right (its bigger), make left 'wall' = middle + 1 (we alr checked middle)
         elif array[middle] < target:
             left = middle + 1
+        # if target is smaller (to the left), make right 'wall' = middle - 1 (again, we checked middle)
         else: # array[middle] > target
             right = middle - 1
     return -1
