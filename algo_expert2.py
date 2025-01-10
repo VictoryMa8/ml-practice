@@ -171,6 +171,25 @@ def isPalindrome(string):
             left += 1
             right -= 1
 
+# same thing
+def caesarCipherEncryptor(string, key):
+    # the letter a = a[0], letter z = a[25]
+    a = "abcdefghijklmnopqrstuvwxyz"
+    newString = ""
+    # traverse the string
+    for i in string:
+        # get the index of old letter
+        letterIndex = a.index(i)
+        # calculate the index of the new letter
+        newLetterIndex = letterIndex + key
+        # if index is over the length of the alphabet,
+        # -26 until it is less than 26, so it "wraps" around the alphabet
+        while newLetterIndex > 25:
+            newLetterIndex = newLetterIndex - 26
+        # add the new letters to the new string
+        newString += a[newLetterIndex]
+    return newString
+
 def main():
     print("Hello")
 
