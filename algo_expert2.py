@@ -132,6 +132,17 @@ def insertionSort(array):
 
     return array
 
+# will explain later
+def selectionSort(array):
+    tempArr = []
+    m = len(array)
+    while m > 0:
+        minEl = min(array)
+        tempArr.append(minEl)
+        array.remove(minEl)
+        m -= 1
+    return tempArr
+
 def main():
     print("Hello")
 
