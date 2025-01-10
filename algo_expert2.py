@@ -104,6 +104,34 @@ def findThreeLargestNumbers(array):
             max1 = array[i]
     return [max1, max2, max3]
 
+# will explain later
+def bubbleSort(array):
+    numSwaps = 1
+    while numSwaps > 0:
+        numSwaps = 0
+        for i in range(len(array) - 1):
+            if array[i] > array[i+1]:
+                temp = array[i+1]
+                array[i+1] = array[i]
+                array[i] = temp
+                numSwaps += 1
+    return array
+
+# will explain later
+def insertionSort(array):
+    i = 0
+    sortedSize = 1;
+    while sortedSize < len(array):
+        nextItem = array[sortedSize]
+        i = sortedSize - 1
+        while i >= 0 and nextItem < array[i]:
+            array[i+1] = array[i]
+            i -= 1
+        array[i+1] = nextItem;
+        sortedSize += 1
+
+    return array
+
 def main():
     print("Hello")
 
