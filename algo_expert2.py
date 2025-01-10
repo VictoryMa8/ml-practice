@@ -143,6 +143,34 @@ def selectionSort(array):
         m -= 1
     return tempArr
 
+# will explain later
+def isPalindrome(string):
+    # set left to traverse one way and right to the other way
+    left = 0
+    right = len(string) - 1
+
+    # base case if string is one character
+    if left == right:
+        return True
+
+    # while we look at each character
+    while left <= right:
+        # if the sides are not exactly the same, return false
+        if string[left] != string[right]:
+            return False
+        # continue to look if characters are the same
+        elif string[left] == string[right]:
+            # if we reach the end and the string has a equal number of chars
+            # example: teet, the pointers look at e and e at the end
+            if len(string) % 2 == 0 and left == right - 1:
+                return True
+            # if we reach the end and the string has an odd number of chars
+            # example: popop, the pointers look at the middle p at the end
+            elif len(string) % 2 == 1 and left == right:
+                return True
+            left += 1
+            right -= 1
+
 def main():
     print("Hello")
 
