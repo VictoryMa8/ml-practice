@@ -104,7 +104,8 @@ def findThreeLargestNumbers(array):
             max1 = array[i]
     return [max1, max2, max3]
 
-# will explain later
+# swap items until all pairs of numbers are i < i+1 while keeping track of swaps
+# once we dont have to swap, we end the traversal
 def bubbleSort(array):
     numSwaps = 1
     while numSwaps > 0:
@@ -117,7 +118,9 @@ def bubbleSort(array):
                 numSwaps += 1
     return array
 
-# will explain later
+# insertion sort has us traverse the array, if "next item" is < the "current" item,
+# move it down until that is no longer the case
+# we keep track of sorted size until we go through the whole thing
 def insertionSort(array):
     i = 0
     sortedSize = 1;
@@ -132,7 +135,8 @@ def insertionSort(array):
 
     return array
 
-# will explain later
+# in selection sort, we make a new array and traverse the og array and find the min value and add it,
+# until we run out of numbers, it is O(n^2)
 def selectionSort(array):
     tempArr = []
     m = len(array)
@@ -171,7 +175,9 @@ def isPalindrome(string):
             left += 1
             right -= 1
 
-# same thing
+# in a caesar cipher, we take the alphabet, and shift "right" x times, with x being the key
+# for example, if we have "abc", and put it through with a key of 3, we would have "def"
+# if the key is greater than the amount of letters in the alphabet, wrap back around to abcd etc...
 def caesarCipherEncryptor(string, key):
     # the letter a = a[0], letter z = a[25]
     a = "abcdefghijklmnopqrstuvwxyz"
