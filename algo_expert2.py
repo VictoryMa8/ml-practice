@@ -183,9 +183,9 @@ def caesarCipherEncryptor(string, key):
         # calculate the index of the new letter
         newLetterIndex = letterIndex + key
         # if index is over the length of the alphabet,
-        # -26 until it is less than 26, so it "wraps" around the alphabet
-        while newLetterIndex > 25:
-            newLetterIndex = newLetterIndex - 26
+        # modulo 26 (-26 until it is less than 26), so it "wraps" around the alphabet
+        if newLetterIndex > 25:
+            newLetterIndex = newLetterIndex % 26
         # add the new letters to the new string
         newString += a[newLetterIndex]
     return newString
