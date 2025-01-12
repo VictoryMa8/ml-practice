@@ -210,8 +210,7 @@ def runLengthEncoding(string):
         count += 1
         # if we're at the end of the string, add the current count and char to the result
         if i+1 == len(string):
-            result += str(count) + curr
-            count = 0   
+            result += str(count) + curr  
         # if the count is at 9, stop and add count and char and reset the count
         elif count == 9:
             result += str(count) + curr
@@ -221,6 +220,25 @@ def runLengthEncoding(string):
             result += str(count) + curr
             count = 0
     return result
+
+# will explain later
+def commonCharacters(strings):
+    # make set of one of the strings, in this case the first one
+    commonChars = set(strings[0])
+    # traverse array of strings
+    for string in strings:
+        # make a set for chars in common
+        inCommonSet = set()
+        # look through all chars of current str
+        for char in string:
+            # if current str has a char in common with the previous set,
+            # add it to the compareCurr set
+            if char in commonChars:
+                inCommonSet.add(char)
+        # "reduce" the og set to this new set of chars that are in common
+        # between the current str and previous str
+        commonChars = inCommonSet
+    return list(commonChars)
 
 def main():
     print("Hello")
