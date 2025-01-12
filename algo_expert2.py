@@ -240,6 +240,40 @@ def commonCharacters(strings):
         commonChars = inCommonSet
     return list(commonChars)
 
+# generate a document by using the chars in the "characters" string
+# the "document" string is what we want to achieve
+# example: "ictorrr VVV" can generate the "Victor" document since it has the required chars (more than enough)
+def generateDocument(characters, document):
+    # create dicts for each string
+    charDict = dict()
+    docDict = dict()
+    # if document string is empty just return true, we can always achieve that
+    if document == "":
+        return True
+    # traverse chars in characters
+    for i in characters:
+        # add it into the dict or add to the count
+        if i not in charDict:
+            charDict[i] = 1
+        else:
+            charDict[i] += 1
+    # same with document string
+    for i in document:
+        if i not in docDict:
+            docDict[i] = 1
+        else:
+            docDict[i] += 1
+    # traverse all the counts
+    for i in docDict:
+        # if any char in document is not in characters, return false, since we can't make the doc
+        if i not in charDict:
+            return False
+        # if at any point the doc needs more instances of a char than we have at our disposal, we can't make the doc
+        elif docDict[i] > charDict[i]:
+            return False
+    # otherwise return true if everything is all good
+    return True
+
 def main():
     print("Hello")
 
