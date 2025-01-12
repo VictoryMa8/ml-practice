@@ -274,6 +274,24 @@ def generateDocument(characters, document):
     # otherwise return true if everything is all good
     return True
 
+# will explain later
+def firstNonRepeatingCharacter(string):
+    chars = set()
+    discard = set()
+    for i in string:
+        if i not in chars and i not in discard:
+            chars.add(i)
+        elif i in chars and i not in discard:
+            chars.remove(i)
+            discard.add(i)
+    if len(chars) == 0:
+        return -1
+    result = 999
+    for i in list(chars):
+        if string.index(i) < result:
+            result = string.index(i)
+    return result
+
 def main():
     print("Hello")
 
