@@ -196,6 +196,32 @@ def caesarCipherEncryptor(string, key):
         newString += a[newLetterIndex]
     return newString
 
+# say we have strings like AAAABBBBCCC, we want to look like this: 4A4B3C, numbers denoting amount of the letter
+# if we have more than 9 in a row, we have to do it like this: 9A3A = 12 A's in a row
+def runLengthEncoding(string):
+    # initialize a result string and a count string
+    result = ""
+    count = 0
+    # traverse string
+    for i in range(len(string)):
+        # establish current char
+        curr = string[i]
+        # add 1 to the count
+        count += 1
+        # if we're at the end of the string, add the current count and char to the result
+        if i+1 == len(string):
+            result += str(count) + curr
+            count = 0   
+        # if the count is at 9, stop and add count and char and reset the count
+        elif count == 9:
+            result += str(count) + curr
+            count = 0
+        # if the next char does not match current char, add the count with char and reset the count
+        elif string[i+1] != curr:
+            result += str(count) + curr
+            count = 0
+    return result
+
 def main():
     print("Hello")
 
