@@ -1,3 +1,24 @@
+'''
+Easy Level Coding Questions (Part 2)
+
+1. Remove Duplicates From Linked List
+2. Middle Node
+3. Get Nth Fibonacci
+4. Product Sum
+5. Binary Search
+6. Find Three Largest Numbers
+7. Bubble Sort
+8. Insertion Sort
+9. Selection Sort
+10. Is Palindrome
+11. Caesar Cipher Encryptor
+12. Run Length Encoding
+13. Common Characters
+14. Generate Document
+15. First Non-repeating Character
+
+'''
+
 # we have a linked list sorted in ascending order
 # remove all duplicates from it
 # we just go through the linked list see compare the current node to the next node
@@ -27,11 +48,9 @@ def middleNode(linkedList):
     # set up two things to traverse the linked list
     slow = linkedList
     fast = linkedList
-
     while fast and fast.next is not None:
         fast = fast.next.next
         slow = slow.next
-
     return slow
 
 # fibonacci sequence
@@ -49,7 +68,6 @@ def getNthFib(n):
         temp = x # 0 1 1 2 3
         x = y # 1 1 2 3 5
         y += temp # 1 2 3 5 8
-
     return x
 
 # will add more comments later
@@ -69,11 +87,9 @@ def productSum(array):
 
 # in a sorted array, binary search eliminates half the array at a time to find a target
 def binarySearch(array, target):
-
     # establish window (left most item 0, right most is last index)
     left = 0
     right = len(array) - 1
-    
     # while we have space to search
     while left <= right:
         # middle is self explanatory
@@ -132,7 +148,6 @@ def insertionSort(array):
             i -= 1
         array[i+1] = nextItem;
         sortedSize += 1
-
     return array
 
 # in selection sort, we make a new array and traverse the og array and find the min value and add it,
@@ -152,11 +167,9 @@ def isPalindrome(string):
     # set left to traverse one way and right to the other way
     left = 0
     right = len(string) - 1
-
     # base case if string is one character
     if left == right:
         return True
-
     # while we look at each character
     while left <= right:
         # if the sides are not exactly the same, return false
