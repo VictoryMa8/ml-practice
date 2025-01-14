@@ -40,11 +40,16 @@ person1 = Person("Victory Ma", 21)
 '''
 
 class Student(Person):
-  def __init__(self, name, age, year):
-    # super() function that will make the child class inherit all the methods and properties from its parent
-    super().__init__(name, age)
-    # here we add a new property to the 'student' class that is not in the 'person' class
-    self.graduationYear = year
+    def __init__(self, name, age, year):
+        # super() function that will make the child class inherit all the methods and properties from its parent
+        super().__init__(name, age)
+        # here we add a new property to the 'student' class that is not in the 'person' class
+        self.graduationYear = year
+    # example of polymorphism
+    # this version of 'displayAge' overrides the method in the person class with the same name
+    # if the person is a student, it displays "they are a student"
+    def displayAge(self):
+        print(f"The age of {self.name} is {self.age}. They are a student.")
 
 person2 = Student("Joe Bob", 21, 2026)
 

@@ -4,6 +4,8 @@ Medium Level Coding Questions (Part 1)
 1. Smallest Difference
 2. Move Element To End
 3. Is Monotonic Array
+4. Spiral Traverse
+5. Longest Peak
 
 '''
 
@@ -77,6 +79,30 @@ def spiralTraverse(array):
         new_rows = list(columns)
         array = new_rows[::-1]
     return result
+
+# will add comments later **
+def longestPeak(array):
+    maxPeak = 0
+    currPeak = 1
+    rising = False
+    falling = False
+    for i in range(1, len(array)):
+        if array[i] > array[i - 1] and not falling:
+            currPeak += 1
+            rising = True
+        elif array[i] < array[i - 1] and rising:
+            currPeak += 1
+            falling = True
+            maxPeak = max(maxPeak, currPeak)
+        elif array[i] > array[i - 1] and falling:
+            currPeak = 2
+            falling = False
+            rising = True
+        elif array[i] == array[i - 1]:
+            currPeak = 1
+            falling = False
+            rising = False
+    return maxPeak
 
 def main():
     print("Hello World!")
