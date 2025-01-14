@@ -3,6 +3,7 @@ Medium Level Coding Questions (Part 1)
 
 1. Smallest Difference
 2. Move Element To End
+3. Is Monotonic Array
 
 '''
 
@@ -47,6 +48,35 @@ def moveElementToEnd(array, toMove):
     # put it back onto the array
     array.extend(extract)
     return array
+
+# will add comments later
+def isMonotonic(array):
+    if len(array) <= 1:
+        return True
+    decreasing = True
+    increasing = True
+    prev = array[0]
+    for i in range(1, len(array)):
+        if prev > array[i]:
+            increasing = False
+        elif prev < array[i]:
+            decreasing = False
+        prev = array[i]
+    return decreasing or increasing
+
+
+# will add comments later **
+def spiralTraverse(array):
+    result = []
+    # while theres stuff still in the array
+    while array:
+        # take the first row
+        result += array.pop(0)
+        # rotate the rest of the matrix
+        columns = zip(*array)
+        new_rows = list(columns)
+        array = new_rows[::-1]
+    return result
 
 def main():
     print("Hello World!")
