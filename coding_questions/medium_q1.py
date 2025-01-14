@@ -2,6 +2,7 @@
 Medium Level Coding Questions (Part 1)
 
 1. Smallest Difference
+2. Move Element To End
 
 '''
 
@@ -22,6 +23,30 @@ def smallestDifference(arrayOne, arrayTwo):
                 # update the list to return
                 closest = [i, j]
     return closest
+
+# will add comments later
+def moveElementToEnd(array, toMove):
+    # sort array asc
+    array.sort()
+    firstIndex = 0
+    lastIndex = 0
+    # traverse until you find the first instance of the target int
+    for i in range(len(array)):
+        if array[i] == toMove:
+            firstIndex = i
+            break
+    # traverse backwards until you find the last instance
+    for i in range(len(array) - 1, -1, -1):
+        if array[i] == toMove:
+            lastIndex = i
+            break
+    # take out all the instances from first to last index
+    extract = array[firstIndex:lastIndex + 1]
+    # delete it from the array
+    del array[firstIndex:lastIndex + 1]
+    # put it back onto the array
+    array.extend(extract)
+    return array
 
 def main():
     print("Hello World!")
