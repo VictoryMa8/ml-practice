@@ -104,6 +104,33 @@ def longestPeak(array):
             rising = False
     return maxPeak
 
+# will add comments later **
+def arrayOfProducts(array):
+    result = []
+    product = 1
+    zeroCount = 0
+    
+    for i in array:
+        if i != 0:
+            product *= i
+        else:
+            zeroCount += 1
+    
+    for i in array:
+        if zeroCount == 0:
+            result.append(product / i)
+
+        if zeroCount == 1 and i != 0:
+            result.append(0);
+        
+        if zeroCount == 1 and i == 0:
+            result.append(product)
+        
+        if zeroCount > 1:
+            result.append(0)
+            
+    return result
+
 def main():
     print("Hello World!")
 
