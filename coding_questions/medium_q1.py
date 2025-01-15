@@ -9,6 +9,9 @@ Medium Level Coding Questions (Part 1)
 6. Array of Products (with division)
 7. Merge Overlapping Intervals
 8. Best Seat
+9. Zero Sum Subarray
+10. Missing Numbers
+11. Majority Element
 
 '''
 
@@ -176,6 +179,50 @@ def bestSeat(seats):
                 bestSpace = currSpace
                 bestSeatIndex = i - currSpace // 2
     return bestSeatIndex
+
+# will explain later **
+def zeroSumSubarray(nums):
+    sums = set()
+    count = 0
+    for number in nums:
+        sums.add(count)
+        count += number
+        if count in sums:
+            return True
+    return False
+
+# given a list of numbers (nums) from 1 to n, find the two missing numbers in that interval
+# this means that the length of nums is n - 2
+def missingNumbers(nums):
+    # initialize result to return
+    result = []
+    # create set of nums
+    mySet = set(nums)
+    # go from 1 to n (or length of nums + 2), we + 3 because range is exclusive
+    for i in range(1, len(nums) + 3):
+        # if the current number is not in the set, add it to result
+        if i not in mySet:
+            result.append(i)
+    # example: nums = [1, 4], this list is added to the set
+    # i visits numbers from 1 to 4 and notices that 2 and 3 are not in the set, this is returned
+    return result
+
+# explaining ltr
+def majorityElement(array):
+    answer = array[0]
+    count = 1
+
+    for i in range(1, len(array)):
+        if array[i] == answer:
+            count += 1
+        else:
+            count -= 1
+
+        if count == 0:
+            answer = array[i]
+            count = 1
+    return answer
+
 
 def main():
     print("Hello World!")
