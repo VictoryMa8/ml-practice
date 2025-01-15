@@ -8,6 +8,7 @@ Medium Level Coding Questions (Part 1)
 5. Longest Peak
 6. Array of Products (with division)
 7. Merge Overlapping Intervals
+8. Best Seat
 
 '''
 
@@ -159,6 +160,22 @@ def mergeOverlappingIntervals(intervals):
         else:
             i += 1
     return intervals
+
+# will explain later ** 
+def bestSeat(seats):
+    bestSeatIndex = -1
+    currSpace = 0
+    bestSpace = 0
+
+    for i in range(len(seats)):
+        if seats[i] == 1:
+            currSpace = 0
+        else:
+            currSpace += 1
+            if currSpace > bestSpace:
+                bestSpace = currSpace
+                bestSeatIndex = i - currSpace // 2
+    return bestSeatIndex
 
 def main():
     print("Hello World!")
