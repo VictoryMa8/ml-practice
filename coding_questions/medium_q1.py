@@ -6,6 +6,8 @@ Medium Level Coding Questions (Part 1)
 3. Is Monotonic Array
 4. Spiral Traverse
 5. Longest Peak
+6. Array of Products (with division)
+7. Merge Overlapping Intervals
 
 '''
 
@@ -130,6 +132,33 @@ def arrayOfProducts(array):
             result.append(0)
             
     return result
+
+# more comments later
+def mergeOverlappingIntervals(intervals):
+    # sort the array by each list's first entry
+    intervals.sort(key = lambda x: x[0])
+    i = 0
+    # iterate through the intervals
+    while i < len(intervals) - 1:
+        # establish current interval's end and next interval's start
+        currEnd = intervals[i][1]
+        nextStart = intervals[i + 1][0]
+        # if the current end greater than or equal to next start
+        if currEnd >= nextStart:
+            # let the new end of current be the larger of the two
+            # this combines the two intervals
+            # say we have [3, 5] and [3, 8], they are overlapping
+            # since current interval is the earliest, when we combine, we automatically take it's start
+            # since we're combining the two intervals, we must determine with end to take,
+            # we use max() to find the largest, put this new interval into current, and delete ther other interval
+            newCurrEnd = max(intervals[i][1], intervals[i + 1][1])
+            intervals[i][1] = newCurrEnd
+            # delete the next interval if they combined
+            del intervals[i + 1]
+        # otherwise go to the next item
+        else:
+            i += 1
+    return intervals
 
 def main():
     print("Hello World!")
