@@ -12,6 +12,7 @@ Medium Level Coding Questions (Part 1)
 9. Zero Sum Subarray
 10. Missing Numbers
 11. Majority Element
+12. Sweet and Savory
 
 '''
 
@@ -222,6 +223,29 @@ def majorityElement(array):
             answer = array[i]
             count = 1
     return answer
+
+# explaining ltr **
+# sorting and using two pointers to traverrse the array
+def sweetAndSavory(dishes, target):
+    result = [0, 0]
+    dishes.sort()
+    # first and last elements
+    left = 0 
+    right = len(dishes) - 1
+    bestCombo = float('inf')
+    while left < right and dishes[left] < 0 and dishes[right] > 0:
+        currCombo = dishes[left] + dishes[right]
+        # combo is too savory
+        if currCombo > target:
+            right -= 1
+            continue
+        closenessToTarget = target - currCombo
+        if closenessToTarget <= bestCombo:
+            result[0] = dishes[left]
+            result[1] = dishes[right]
+            bestCombo = closenessToTarget
+        left += 1
+    return result
 
 
 def main():
