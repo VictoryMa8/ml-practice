@@ -3,10 +3,11 @@ Binary Search Tree Functionality
 
 1. Implementation
 2. Validation
+3. Traversal
 
 '''
 
-# 1. implementation
+# 1. Implementation
 class BST:
     def __init__(self, value):
         self.value = value
@@ -87,7 +88,7 @@ def remove(self, value, parent = None):
                 parent.right = self.right
     return self
 
-# 2. validation
+# 2. Validation
 def validateBst(tree, min = float('-inf'), max = float('inf')):
     if tree == None:
         return True
@@ -95,3 +96,46 @@ def validateBst(tree, min = float('-inf'), max = float('inf')):
         return False
 
     return validateBst(tree.left, min, tree.value) and validateBst(tree.right, tree.value, max)
+
+# 3. Traversal
+def inOrderTraverse(tree, array):
+    stack = []
+    if tree is not None:
+        curr = tree
+    while stack or curr is not None:
+        while curr is not None:
+            stack.append(curr)
+            curr = curr.left
+        curr = stack.pop()
+        array.append(curr.value)
+        curr = curr.right
+    return array
+    pass
+
+
+def preOrderTraverse(tree, array):
+    stack = []
+    if tree is not None:
+        stack.append(tree)
+    while stack:
+        curr = stack.pop()
+        array.append(curr.value)
+        if curr.right is not None:
+            stack.append(curr.right)
+        if curr.left is not None:
+            stack.append(curr.left)
+    return array
+    pass
+
+def postOrderTraverse(tree, array):
+    stack = []
+    if tree is not None:
+        stack.append(tree)
+    while stack:
+        curr = stack.pop()
+        array.append(curr.value)
+        if curr.left is not None:
+            stack.append(curr.left)
+        if curr.right is not None:
+            stack.append(curr.right)
+    return array[::-1]
