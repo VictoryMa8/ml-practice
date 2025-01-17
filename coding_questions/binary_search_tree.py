@@ -4,6 +4,7 @@ Binary Search Tree Functionality
 1. Implementation
 2. Validation
 3. Traversal
+4. Minimum Height Construction
 
 '''
 
@@ -139,3 +140,15 @@ def postOrderTraverse(tree, array):
         if curr.right is not None:
             stack.append(curr.right)
     return array[::-1]
+
+# 4. Minimum Height Contruction
+def minHeightBst(array):
+    left = 0
+    right = len(array) - 1
+    middle = (left + right) // 2
+    if left > right:
+        return
+    currentNode = BST(array[middle])
+    currentNode.left = minHeightBst(array[:middle])
+    currentNode.right = minHeightBst(array[middle + 1:])
+    return currentNode
