@@ -5,6 +5,7 @@ Binary Search Tree Functionality
 2. Validation
 3. Traversal
 4. Minimum Height Construction
+5. Find Kth Largest Value
 
 '''
 
@@ -152,3 +153,21 @@ def minHeightBst(array):
     currentNode.left = minHeightBst(array[:middle])
     currentNode.right = minHeightBst(array[middle + 1:])
     return currentNode
+
+# 5. Find Kth Largest Value
+def findKthLargestValueInBst(tree, k):
+    count = 0
+    stack = []
+    curr = tree
+
+    while stack or curr:
+        if curr:
+            stack.append(curr)
+            curr = curr.right
+        else:
+            curr = stack.pop()
+            count += 1
+            if count == k:
+                return curr.value
+                
+            curr = curr.left
