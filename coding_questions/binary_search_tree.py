@@ -1,11 +1,13 @@
 ''' 
 Binary Search Tree Functionality
 
-1. Implementation
-2. Validation
-3. Traversal
-4. Minimum Height Construction
-5. Find Kth Largest Value
+1. Implement BST
+2. Validate BST
+3. In Order, Pre-Order, & Post-Order Traversal
+4. Minimum Height Construction BST
+5. Find Kth Largest Value In BST
+6. Reconstruct BST
+7. Invert Binary Tree
 
 '''
 
@@ -154,7 +156,7 @@ def minHeightBst(array):
     currentNode.right = minHeightBst(array[middle + 1:])
     return currentNode
 
-# 5. Find Kth Largest Value
+# 5. Find Kth Largest Value In BST
 def findKthLargestValueInBst(tree, k):
     count = 0
     stack = []
@@ -172,6 +174,23 @@ def findKthLargestValueInBst(tree, k):
                 
             curr = curr.left
 
+# 6. Reconstruct BST
+def reconstructBst(preOrderTraversalValues):
+    root = BST(preOrderTraversalValues[0])
+    for i in range (1, len(preOrderTraversalValues)):
+        root.insert(preOrderTraversalValues[i])
+    return root
+
+# 7. Invert Binary Tree
+def invertBinaryTree(tree):
+    queue = [tree]
+    while len(queue):
+        current = queue.pop(0)
+        if current is None:
+            continue
+        current.left, current.right = current.right, current.left
+        queue.append(current.left)
+        queue.append(current.right)
 
 def main():
     array1 = [5, 10, 3, 2, 8, 7, 4]
