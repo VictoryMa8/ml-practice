@@ -175,8 +175,7 @@ def findKthLargestValueInBst(tree, k):
 
 def main():
     array1 = [5, 10, 3, 2, 8, 7, 4]
-    bst1 = minHeightBst(array1)
-    print(findKthLargestValueInBst(bst1, 2))
+    minHeightBst(array1)
     
 
 if __name__ == "__main__":
