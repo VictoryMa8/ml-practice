@@ -171,3 +171,13 @@ def findKthLargestValueInBst(tree, k):
                 return curr.value
                 
             curr = curr.left
+
+
+def main():
+    array1 = [5, 10, 3, 2, 8, 7, 4]
+    bst1 = minHeightBst(array1)
+    print(findKthLargestValueInBst(bst1, 2))
+    
+
+if __name__ == "__main__":
+    main()
