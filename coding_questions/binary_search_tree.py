@@ -114,7 +114,6 @@ def inOrderTraverse(tree, array):
         array.append(curr.value)
         curr = curr.right
     return array
-    pass
 
 
 def preOrderTraverse(tree, array):
@@ -191,6 +190,32 @@ def invertBinaryTree(tree):
         current.left, current.right = current.right, current.left
         queue.append(current.left)
         queue.append(current.right)
+
+# 8. Find Successor
+# a node's successor is the next node to be visited when traversing using in-order traversal method
+class BinaryTree:
+    def __init__(self, value, left=None, right=None, parent=None):
+        self.value = value
+        self.left = left
+        self.right = right
+        self.parent = parent
+
+def leftmostChild(node):
+    currentNode = node
+    while currentNode.left is not None:
+        currentNode = currentNode.left
+    return currentNode
+
+def rightmostParent(node):
+    currentNode = node
+    while currentNode.parent is not None and currentNode.parent.right == currentNode:
+        currentNode = currentNode.parent
+    return currentNode.parent
+
+def findSuccessor(tree, node):
+    if node.right is not None:
+        return leftmostChild(node.right)
+    return rightmostParent(node)
 
 def main():
     array1 = [5, 10, 3, 2, 8, 7, 4]
