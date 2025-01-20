@@ -8,6 +8,9 @@ Binary Search Tree Functionality
 5. Find Kth Largest Value In BST
 6. Reconstruct BST
 7. Invert Binary Tree
+8. Find Successor
+9. Merge Binary Trees
+10. Symmetrical Tree
 
 '''
 
@@ -17,6 +20,13 @@ class BST:
         self.value = value
         self.left = None
         self.right = None
+
+class BinaryTree:
+    def __init__(self, value, left = None, right = None, parent = None):
+        self.value = value
+        self.left = left
+        self.right = right
+        self.parent = parent
 
 def getMinimumValue(self):
         if self.left is None:
@@ -193,13 +203,6 @@ def invertBinaryTree(tree):
 
 # 8. Find Successor
 # a node's successor is the next node to be visited when traversing using in-order traversal method
-class BinaryTree:
-    def __init__(self, value, left=None, right=None, parent=None):
-        self.value = value
-        self.left = left
-        self.right = right
-        self.parent = parent
-
 def leftmostChild(node):
     currentNode = node
     while currentNode.left is not None:
@@ -217,10 +220,44 @@ def findSuccessor(tree, node):
         return leftmostChild(node.right)
     return rightmostParent(node)
 
+# 9. Merge Binary Trees
+def mergeBinaryTrees(tree1, tree2):
+    if tree1 is None:
+        return tree2
+    elif tree2 is None:
+        return tree1
+
+    tree1.value += tree2.value
+    tree1.left = mergeBinaryTrees(tree1.left, tree2.left)
+    tree1.right = mergeBinaryTrees(tree1.right, tree2.right)
+    
+    return tree1
+
+# 10. Symmetrical Tree
+def symmetricalTree(tree):
+
+    stackLeft = [tree.left]
+    stackRight = [tree.right]
+
+    while stackLeft:
+        left = stackLeft.pop()
+        right = stackRight.pop()
+        
+        if left is None and right is None:
+            continue
+        if left is None or right is None or left.value != right.value:
+            return False
+
+        stackLeft.append(left.left)
+        stackLeft.append(left.right)
+        stackRight.append(right.right)
+        stackRight.append(right.left)
+            
+    return True
+
 def main():
     array1 = [5, 10, 3, 2, 8, 7, 4]
     minHeightBst(array1)
     
-
 if __name__ == "__main__":
     main()
