@@ -11,6 +11,7 @@ Binary Search Tree Functionality
 8. Find Successor
 9. Merge Binary Trees
 10. Symmetrical Tree
+11. Split Binary Tree
 
 '''
 
@@ -254,6 +255,26 @@ def symmetricalTree(tree):
         stackRight.append(right.left)
             
     return True
+
+# 11. Split Binary Tree
+# checks if the tree can be split into two binary trees of equal sum by removing a single edge
+# returns the new sum of the binary trees, otherwise 0
+def getSums(tree, sums):
+    if not tree:
+        return 0
+
+    total = getSums(tree.left, sums) + getSums(tree.right, sums) + tree.value
+    sums.add(total)
+    return total
+
+def splitBinaryTree(tree):
+    sums = set()
+    total = getSums(tree, sums)
+
+    if (total / 2) in sums:
+        return total / 2
+    else:
+        return 0
 
 def main():
     array1 = [5, 10, 3, 2, 8, 7, 4]
