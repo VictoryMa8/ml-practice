@@ -14,7 +14,7 @@ Binary Search Tree Functionality
 
 '''
 
-# 1. Implementation
+# 1. Implementation, comments needed
 class BST:
     def __init__(self, value):
         self.value = value
@@ -102,7 +102,7 @@ def remove(self, value, parent = None):
                 parent.right = self.right
     return self
 
-# 2. Validation
+# 2. Validation, comments needed
 def validateBst(tree, min = float('-inf'), max = float('inf')):
     if tree == None:
         return True
@@ -111,7 +111,7 @@ def validateBst(tree, min = float('-inf'), max = float('inf')):
 
     return validateBst(tree.left, min, tree.value) and validateBst(tree.right, tree.value, max)
 
-# 3. Traversal
+# 3. Traversal, comments needed
 def inOrderTraverse(tree, array):
     stack = []
     if tree is not None:
@@ -153,7 +153,7 @@ def postOrderTraverse(tree, array):
             stack.append(curr.right)
     return array[::-1]
 
-# 4. Minimum Height Contruction
+# 4. Minimum Height Contruction, comments needed
 def minHeightBst(array):
     left = 0
     right = len(array) - 1
@@ -165,7 +165,7 @@ def minHeightBst(array):
     currentNode.right = minHeightBst(array[middle + 1:])
     return currentNode
 
-# 5. Find Kth Largest Value In BST
+# 5. Find Kth Largest Value In BST, comments needed
 def findKthLargestValueInBst(tree, k):
     count = 0
     stack = []
@@ -183,14 +183,14 @@ def findKthLargestValueInBst(tree, k):
                 
             curr = curr.left
 
-# 6. Reconstruct BST
+# 6. Reconstruct BST, comments needed
 def reconstructBst(preOrderTraversalValues):
     root = BST(preOrderTraversalValues[0])
     for i in range (1, len(preOrderTraversalValues)):
         root.insert(preOrderTraversalValues[i])
     return root
 
-# 7. Invert Binary Tree
+# 7. Invert Binary Tree, comments needed
 def invertBinaryTree(tree):
     queue = [tree]
     while len(queue):
@@ -201,7 +201,7 @@ def invertBinaryTree(tree):
         queue.append(current.left)
         queue.append(current.right)
 
-# 8. Find Successor
+# 8. Find Successor, comments needed
 # a node's successor is the next node to be visited when traversing using in-order traversal method
 def leftmostChild(node):
     currentNode = node
@@ -220,7 +220,7 @@ def findSuccessor(tree, node):
         return leftmostChild(node.right)
     return rightmostParent(node)
 
-# 9. Merge Binary Trees
+# 9. Merge Binary Trees, comments needed
 def mergeBinaryTrees(tree1, tree2):
     if tree1 is None:
         return tree2
@@ -233,7 +233,7 @@ def mergeBinaryTrees(tree1, tree2):
     
     return tree1
 
-# 10. Symmetrical Tree
+# 10. Symmetrical Tree, comments needed
 def symmetricalTree(tree):
 
     stackLeft = [tree.left]
