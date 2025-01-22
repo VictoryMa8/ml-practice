@@ -9,6 +9,7 @@ Medium & Hard Level Coding Questions (Part 2)
 6. Kadane's Algorithm
 7. Single Cycle Check
 8. Breadth First Search
+9. Merge Sort
 
 '''
 
@@ -124,6 +125,39 @@ class Node:
             for child in current.children:
                 queue.append(child)
         return array  
+    
+# 9. Merge Sort
+def mergeSort(array):
+    if len(array) <= 1:
+        return array
+
+    # split the array
+    middle = len(array) // 2
+    left = mergeSort(array[:middle])
+    right = mergeSort(array[middle:])
+
+    # merge them together
+    merged = []
+    i = 0
+    j = 0
+
+    while i < len(left) and j < len(right):
+        if left[i] < right[j]:
+            merged.append(left[i])
+            i += 1
+        else:
+            merged.append(right[j])
+            j += 1
+
+    # leftovers
+    while i < len(left):
+        merged.append(left[i])
+        i += 1
+    while j < len(right):
+        merged.append(right[j])
+        j += 1
+
+    return merged
 
 def main():
     print("Hello World!")
