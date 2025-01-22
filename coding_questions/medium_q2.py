@@ -3,6 +3,8 @@ Medium & Hard Level Coding Questions (Part 2)
 
 1. Reverse Linked List
 2. Quick Sort
+3. Ways To Make Change (Infinite Supply)
+4. Minimum Number Of Coins For Change
 
 '''
 
@@ -39,6 +41,31 @@ def quickSortHelper(array, start, stop):
 	quickSortHelper(array, start, i - 2)
 	quickSortHelper(array, i, stop)
 	return
+
+# 3. Ways To Make Change (Infinite Supply)
+def numberOfWaysToMakeChange(n, denoms):
+    ways = [0] * (n + 1)
+    ways[0] = 1
+
+    for i in denoms:
+        for j in range(1, n + 1):
+            if i <= j:
+                ways[j] += ways[j - i]
+    return ways[n]
+
+# 4. Minimum Number Of Coins For Change
+def minNumberOfCoinsForChange(n, denoms):
+    numberOfCoins = [float('inf')] * (n + 1)
+    numberOfCoins[0] = 0
+
+    for denom in denoms:
+        for amount in range(len(numberOfCoins)):
+            if denom <= amount:
+                numberOfCoins[amount] = min(numberOfCoins[amount], numberOfCoins[amount - denom] + 1)
+    if numberOfCoins[n] == float("inf"):
+        return -1
+    else:
+        return numberOfCoins[n] 
 
 def main():
     print("Hello World!")
