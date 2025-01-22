@@ -5,6 +5,10 @@ Medium & Hard Level Coding Questions (Part 2)
 2. Quick Sort
 3. Ways To Make Change (Infinite Supply)
 4. Minimum Number Of Coins For Change
+5. Number Of Ways To Traverse Graph
+6. Kadane's Algorithm
+7. Single Cycle Check
+8. Breadth First Search
 
 '''
 
@@ -66,6 +70,62 @@ def minNumberOfCoinsForChange(n, denoms):
         return -1
     else:
         return numberOfCoins[n] 
+    
+# 5. Number Of Ways To Traverse Graph
+def numberOfWaysToTraverseGraph(width, height):
+    if width == 1 or height == 1:
+        return 1
+
+    return numberOfWaysToTraverseGraph(width - 1, height) + numberOfWaysToTraverseGraph(width, height - 1)
+
+# 6. Kadanes Algorithm
+def kadanesAlgorithm(array):
+    border = array[0]
+    maxSum = array[0]
+    for i in range(1, len(array)):
+        current = array[i]
+        border = max(current, border + current)
+        maxSum = max(maxSum, border)
+    return maxSum
+
+# 7. Single Cycle Check
+# keep track of number of jumps and current index
+# use modulo to calculate wrapping around
+# break loop if:
+# index is 0, value of current is 0, or jumps more than number of elements
+# if number of jumps = number of elements, its valid
+def hasSingleCycle(array):
+    jumps = position = 0
+    
+    while True:
+        position += array[position]
+        position %= len(array)
+        jumps += 1
+
+        if position == 0 or array[position] == 0 or jumps > len(array):
+            break
+    return jumps == len(array)
+
+# 8. Breadth First Search
+class Node:
+    def __init__(self, name):
+        self.children = []
+        self.name = name
+
+    def addChild(self, name):
+        self.children.append(Node(name))
+        return self
+
+    def breadthFirstSearch(self, array):
+        queue = [self]
+        while queue:
+            current = queue.pop(0)
+            array.append(current.name)
+            for child in current.children:
+                queue.append(child)
+        return array  
+    
+
 
 def main():
     print("Hello World!")
