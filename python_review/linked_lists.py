@@ -3,6 +3,7 @@ Linked Lists
 
 1. Double Linked List Implementation
 2. Remove Kth Node From End
+3. Reverse Linked List
 '''
 
 class LinkedList:
@@ -126,6 +127,18 @@ def removeKthNodeFromEnd(head, k):
         second = second.next
         first = first.next
     first.next = first.next.next
+
+# 3. Reverse Linked List
+def reverseLinkedList(head):
+    # 1 -> 5 -> 3 -> 7 -> 9
+    previousNode = None
+    currentNode = head # 1
+    while currentNode is not None:
+        nextNode = currentNode.next # nextNode = currentNode.next = 5
+        currentNode.next = previousNode # currentNode.next = None
+        previousNode = currentNode # previousNode = currentNode = 1
+        currentNode = nextNode # currentNode = nextNode = 5
+    return previousNode
 
 def main():
     print("Hello")

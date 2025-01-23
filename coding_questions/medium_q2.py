@@ -11,6 +11,7 @@ Medium & Hard Level Coding Questions (Part 2)
 8. Breadth First Search
 9. Merge Sort
 10. Knapsack Problem
+11. Four Number Sum
 
 '''
 
@@ -192,6 +193,26 @@ def knapsackProblem(items, capacity):
                     values[i - 1][j - currentWeight] + currentValue
                 )
     return [values[-1][-1], getItems(values, items)]
+
+# 11. Four Number Sum
+def fourNumberSum(array, targetSum):
+    result = []
+    array.sort()
+    for i in range(len(array) - 3):
+        for j in range(i + 1, len(array) - 2):
+            left = j + 1
+            right = len(array) - 1
+            while left < right:
+                total_sum = array[i] + array[j] + array[left] + array[right]
+                if total_sum == targetSum:
+                    result.append([array[i], array[j], array[left], array[right]])
+                    right -= 1
+                    left += 1
+                elif total_sum > targetSum:
+                    right -= 1
+                else:
+                    left += 1
+    return result
 
 def main():
     print("Hello World!")
