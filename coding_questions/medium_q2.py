@@ -10,6 +10,7 @@ Medium & Hard Level Coding Questions (Part 2)
 7. Single Cycle Check
 8. Breadth First Search
 9. Merge Sort
+10. Knapsack Problem
 
 '''
 
@@ -158,6 +159,39 @@ def mergeSort(array):
         j += 1
 
     return merged
+
+def getItems(values, items):
+    sequence = []
+    i = len(values) - 1
+    j = len(values[0]) - 1
+
+    while i > 0:
+        if values[i][j] == values[i - 1][j]:
+            i -= 1
+        else:
+            sequence.append(i - 1)
+            j -= items[i - 1][1]
+            i -= 1
+        if j == 0:
+            break
+    return list(reversed(sequence))
+
+# 10. Knapsack Problem
+def knapsackProblem(items, capacity):
+    values = [[0 for i in range(0, capacity + 1)] for j in range(0, len(items) + 1)]
+    for i in range(1, len(items) + 1):
+        currentWeight = items[i - 1][1]
+        currentValue = items[i - 1][0]
+
+        for j in range(0, capacity + 1):
+            if currentWeight > j:
+                values[i][j] = values[i - 1][j]
+            else:
+                values[i][j] = max(
+                    values[i - 1][j],
+                    values[i - 1][j - currentWeight] + currentValue
+                )
+    return [values[-1][-1], getItems(values, items)]
 
 def main():
     print("Hello World!")
