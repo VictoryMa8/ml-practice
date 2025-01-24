@@ -13,6 +13,7 @@ Medium & Hard Level Coding Questions (Part 2)
 10. Knapsack Problem
 11. Four Number Sum
 12. Levenshtein Distance
+13. Youngest Common Ancestor
 
 '''
 
@@ -227,6 +228,24 @@ def levenshteinDistance(str1, str2):
             else:
                 edits[i][j] = 1 + min(edits[i - 1][j - 1], edits[i - 1][j], edits[i][j - 1])
     return edits[-1][-1]
+
+# 13. Youngest Common Ancestor
+class AncestralTree:
+    def __init__(self, name):
+        self.name = name
+        self.ancestor = None
+
+
+def getYoungestCommonAncestor(topAncestor, descendantOne, descendantTwo):
+    ance_hist = set()
+    while descendantOne and descendantOne.name:
+        ance_hist.add(descendantOne.name)
+        descendantOne = descendantOne.ancestor
+    while descendantTwo and descendantTwo.name:
+        if descendantTwo.name in ance_hist:
+            return descendantTwo
+        descendantTwo = descendantTwo.ancestor
+    return None
 
 def main():
     print("Hello World!")
