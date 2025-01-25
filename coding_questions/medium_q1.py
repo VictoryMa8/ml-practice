@@ -13,9 +13,11 @@ Medium Level Coding Questions (Part 1)
 10. Missing Numbers
 11. Majority Element
 12. Sweet and Savory
+13. Search In Sorted Matrix
 
 '''
 
+# 1. Smallest Difference
 # we are given two arrays, find the pair of two numbers that has the smallest absolute difference
 def smallestDifference(arrayOne, arrayTwo):
     # initialize the 'smallest' value to record the best pair
@@ -34,6 +36,7 @@ def smallestDifference(arrayOne, arrayTwo):
                 closest = [i, j]
     return closest
 
+# 2. Move Element To End
 # will add comments later
 def moveElementToEnd(array, toMove):
     # sort array asc
@@ -58,6 +61,7 @@ def moveElementToEnd(array, toMove):
     array.extend(extract)
     return array
 
+# 3. Is Monotonic Array
 # will add comments later
 def isMonotonic(array):
     if len(array) <= 1:
@@ -73,7 +77,7 @@ def isMonotonic(array):
         prev = array[i]
     return decreasing or increasing
 
-
+# 4. Spiral Traverse
 # will add comments later **
 def spiralTraverse(array):
     result = []
@@ -87,6 +91,7 @@ def spiralTraverse(array):
         array = new_rows[::-1]
     return result
 
+# 5. Longest Peak
 # will add comments later **
 def longestPeak(array):
     maxPeak = 0
@@ -111,6 +116,7 @@ def longestPeak(array):
             rising = False
     return maxPeak
 
+# 6. Array of Products
 # will add comments later **
 def arrayOfProducts(array):
     result = []
@@ -138,6 +144,7 @@ def arrayOfProducts(array):
             
     return result
 
+# 7. Merge Overlapping Intervals
 # more comments later
 def mergeOverlappingIntervals(intervals):
     # sort the array by each list's first entry
@@ -165,6 +172,7 @@ def mergeOverlappingIntervals(intervals):
             i += 1
     return intervals
 
+# 8. Best Seat
 # will explain later ** 
 def bestSeat(seats):
     bestSeatIndex = -1
@@ -181,6 +189,7 @@ def bestSeat(seats):
                 bestSeatIndex = i - currSpace // 2
     return bestSeatIndex
 
+# 9. Zero Sum Subarray
 # will explain later **
 def zeroSumSubarray(nums):
     sums = set()
@@ -192,6 +201,7 @@ def zeroSumSubarray(nums):
             return True
     return False
 
+# 10. Missing Numbers
 # given a list of numbers (nums) from 1 to n, find the two missing numbers in that interval
 # this means that the length of nums is n - 2
 def missingNumbers(nums):
@@ -208,6 +218,7 @@ def missingNumbers(nums):
     # i visits numbers from 1 to 4 and notices that 2 and 3 are not in the set, this is returned
     return result
 
+# 11. Majority Element
 # explaining ltr
 def majorityElement(array):
     answer = array[0]
@@ -224,8 +235,9 @@ def majorityElement(array):
             count = 1
     return answer
 
+# 12. Sweet and Savory
 # explaining ltr **
-# sorting and using two pointers to traverrse the array
+# sorting and using two pointers to traverse the array
 def sweetAndSavory(dishes, target):
     result = [0, 0]
     dishes.sort()
@@ -247,6 +259,20 @@ def sweetAndSavory(dishes, target):
         left += 1
     return result
 
+# 13. Search In Sorted Matrix
+def searchInSortedMatrix(matrix, target):
+    row = 0
+    col = len(matrix[0]) - 1
+
+    while row <len(matrix) and col >= 0:
+        if matrix[row][col] > target:
+            col -= 1
+        elif matrix[row][col] < target:
+            row += 1
+        else:
+            return [row, col]
+
+    return [-1, -1]
 
 def main():
     print("Hello World!")
