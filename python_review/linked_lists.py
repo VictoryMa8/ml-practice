@@ -4,6 +4,8 @@ Linked Lists
 1. Double Linked List Implementation
 2. Remove Kth Node From End
 3. Reverse Linked List
+4. Find Loop
+
 '''
 
 class LinkedList:
@@ -139,6 +141,19 @@ def reverseLinkedList(head):
         previousNode = currentNode # previousNode = currentNode = 1
         currentNode = nextNode # currentNode = nextNode = 5
     return previousNode
+
+# 4. Find Loop
+def findLoop(head):
+    slow = head.next
+    fast = head.next.next
+    while slow is not fast:
+        slow = slow.next
+        fast = fast.next.next
+    other_ptr = head
+    while other_ptr is not slow:
+        other_ptr = other_ptr.next
+        slow = slow.next
+    return other_ptr
 
 def main():
     print("Hello")
