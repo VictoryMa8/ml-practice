@@ -23,6 +23,5 @@ def main():
     print("It is currently ", currentTime)
     print(mySet)
 
-
 if __name__ == "__main__":
     main()
