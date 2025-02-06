@@ -14,14 +14,13 @@ mySet.add("Beep")
 def square(x):
     return x * x
 
+counter = 0
+
 def main():
     print("Hello World")
-    name = input("Enter your name: ")
-    num1 = input("Enter a number: ")
-    result = square(int(num1))
-    print("Greetings, " + name + ", " + num1 + " squared is " + str(result))
-    print("It is currently ", currentTime)
-    print(mySet)
+    file1 = open("./example.txt", "a")
+    file1.write("\n3, Joe, Scientist")
+    file1.close()
 
 if __name__ == "__main__":
     main()
