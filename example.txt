@@ -1,3 +1,5 @@
 id, name, job
 1, Victory Ma, Full Stack Web Developer
 2, Bob, Worker
+3, Joe, Scientist
+4, Percy Jackson, Demigod

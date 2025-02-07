@@ -14,12 +14,22 @@ mySet.add("Beep")
 def square(x):
     return x * x
 
-counter = 0
-
+def next_id(file_path):
+    file_a = open(file_path, "r")
+    lines = file_a.readlines()
+    if lines:
+        id = lines[-1][0]
+        return int(id) + 1
+    else:
+        return 1
+    
 def main():
     print("Hello World")
     file1 = open("./example.txt", "a")
-    file1.write("\n3, Joe, Scientist")
+    next = next_id("./example.txt")
+    name = input("Enter your name: ")
+    profession = input("Enter your profession: ")
+    file1.write(f"\n{next}, {name}, {profession}")
     file1.close()
 
 if __name__ == "__main__":
