@@ -1,6 +1,7 @@
 import seaborn as sns
 
 penguins = sns.load_dataset('penguins')
+flights = sns.load_dataset('flights')
 
 def main():
     '''
@@ -18,6 +19,7 @@ def main():
     # print(penguins.head())
     # print(penguins.info())
     print(penguins.describe())
+    print(flights.describe())
 
 if __name__ == "__main__":
     main()
