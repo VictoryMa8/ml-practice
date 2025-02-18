@@ -1,10 +1,12 @@
 import seaborn as sns
 import matplotlib.pyplot as plt
+import pandas as pd
 
-penguins = sns.load_dataset('penguins')
+# penguins = sns.load_dataset('penguins')
 flights = sns.load_dataset('flights')
 
 def main():
+    '''
     sns.lmplot(penguins,
             x = 'flipper_length_mm',
             y = 'bill_length_mm',
@@ -14,11 +16,16 @@ def main():
     plt.xlabel('Flipper Length (mm)')
     plt.ylabel('Bill Length (mm)')
     plt.show()
+    '''
 
-    # print(penguins.head())
-    # print(penguins.info())
-    print(penguins.describe())
+    # print(penguins.describe())
     print(flights.describe())
+    flights_list = flights.values.tolist()
+    for i in flights_list:
+        print(i[0])
+
+    # penguins_list = penguins.values.tolist()
+    # print(penguins_list)
 
 if __name__ == "__main__":
     main()
