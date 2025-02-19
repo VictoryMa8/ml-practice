@@ -4,6 +4,7 @@ import pandas as pd
 
 # penguins = sns.load_dataset('penguins')
 flights = sns.load_dataset('flights')
+tips = sns.load_dataset('tips')
 
 def main():
     '''
@@ -20,6 +21,7 @@ def main():
 
     # print(penguins.describe())
     print(flights.describe())
+    print(tips.describe())
     flights_list = flights.values.tolist()
     for i in flights_list:
         print(i[0])
