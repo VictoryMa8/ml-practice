@@ -5,6 +5,7 @@ import pandas as pd
 # penguins = sns.load_dataset('penguins')
 flights = sns.load_dataset('flights')
 tips = sns.load_dataset('tips')
+diamonds = sns.load_dataset('diamonds')
 
 def main():
     '''
