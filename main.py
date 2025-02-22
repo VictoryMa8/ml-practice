@@ -11,7 +11,11 @@ myDict = {
 
 mySet = set()
 mySet.add("Beep")
+mySet.add("Boop")
+mySet.add("Bop")
 
+if "Bop" in mySet:
+    mySet.add("Bam")
 
 def next_id(file_path): # take in file
     file_a = open(file_path, "r") # read it
@@ -24,6 +28,7 @@ def next_id(file_path): # take in file
     
 def main():
     print("Hello World")
+    print(mySet)
     
     file1 = open("./example.txt", "a") # open file
     next = next_id("./example.txt") # call next_id

@@ -5,3 +5,4 @@ id, name, job
 4, Percy Jackson, Demigod
 5, Victor, Software Engineer
 6, Bob Joe, Plumber
+7, Victorious, Dancer
