@@ -1,4 +1,4 @@
-x = 5 % 2
+import shutil
 
 def joe_mama():
     for i in range(1, 100):
@@ -12,8 +12,7 @@ def joe_mama():
             print(i)
 
 def main():
-    print(x)
-    joe_mama()
+    shutil.move("./test.txt", "./test_folder")
 
 if __name__ == "__main__":
     main()
