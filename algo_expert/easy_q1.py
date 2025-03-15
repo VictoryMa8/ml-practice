@@ -13,8 +13,8 @@ Easy Level Coding Questions (Part 1)
 10. Minimum Waiting Time
 11. Class Photos
 12. Tandem Bicycle
-13. Optimal Freelancing
-14. Evaluate Expression Tree
+13. Optimal Freelancing **
+14. Evaluate Expression Tree **
 
 '''
 
