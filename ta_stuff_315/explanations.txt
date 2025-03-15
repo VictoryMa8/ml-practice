@@ -1,0 +1,14 @@
+## Problem 1 (Period)
+The period function finds the smallest repeating pattern in a list of integers. It works by testing each possible period length from 1 to the length of the list. For each potential period, it checks if the list elements repeat after that many positions. If a repeating pattern is found, it returns that period length. If no smaller pattern is found, it returns the length of the whole list.
+
+## Problem 2 (Least Number of Coins)
+This function uses a greedy algorithm to find the minimum number of coins needed to make a certain amount of money. First, it converts dollars and cents to total cents. Then, for each coin type (25, 10, 5, 1), it uses integer division to determine how many of that coin to use, then updates the remaining amount using the modulo operator.
+ 
+## Problem 3 (Valid Smoothie)
+The valid smoothie function determines if a combination of fruits makes an edible smoothie based on specific criteria. It tracks the total weight of fruits and calculates the percentages of sweet and sour components. A smoothie is "edible" if its no more than 80% sweet, no more than 70% sour, and there are no moldy fruits. The functionreturns a boolean indicating whether the smoothie is edible.
+
+## Problem 4 (Bad Kids)
+This function sorts children based on their height and behavior. First, it determines which children are in the correct position by comparing their heights with a sorted list of heights. Children in the correct position get sent to School...  meanwhile other students are assigned locations based on their behavior: Good children go to the Yard, Ok children go to the Principal, and Bad children go Home. The function makes sure that all children at School are in ascending height order.
+
+## Problem 5 (Sad Salamander)
+This function determines the optimal combination of treats and petting to cheer up a salamander. First, it calculates how many treats to buy to maximize money usage (0.10 each, each treat reduces sadness by 2). Then, it calculates how much petting time is needed to reduce any remaining sadness to zero (5 minutes per pet, each pet reduces sadness by 4). The function prints out the money spent and time required to fully cheer up the salamander, using a different message format depending on whether petting was needed.
