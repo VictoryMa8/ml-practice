@@ -5,35 +5,6 @@ from PythonFruits.Apple import Apple
 
 from PythonChildren.Child import Child
 
-# PROBLEM 1
-def period(mylist):
-    # if the list is empty, the period is 0
-    if not mylist:
-        return 0
-    
-    # length of the list
-    n = len(mylist)
-    
-    # try every possible period length from 1 to n
-    for period_length in range(1, n + 1):
-        # Assume this is the period until proven otherwise
-        is_period = True
-        
-        # check if the list repeats with this period length
-        # by comparing each element with the element that is 'period_length' positions ahead
-        for i in range(n - period_length):
-            if mylist[i] != mylist[i + period_length]:
-                # found a mismatch (this isn't the period)
-                is_period = False
-                break
-        
-        # if we didn't find any mismatches we found our period
-        if is_period:
-            return period_length
-    
-    # if no smaller period is found the period is the length of the list
-    return n
-
 # PROBLEM 2
 def leastNumCoins(USD):
     # convert dollars and cents to total cents
@@ -108,20 +79,20 @@ def badChildSorter(childList):
     for i in range(len(childList)):
         child = childList[i]
         
-        # If the child's height matches the sorted height at this position,
+        # if the child's height matches the sorted height at this position,
         # they are in the correct position
         if child.getHeight() == heights[i]:
-            # They're at the right height - send to school
+            # they're at the right height, send to school
             child.setLocation("School")
         else:
-            # Child is out of order - assign location based on behavior
+            # assign location based on behavior if chuld is out of order
             behavior = child.getBehavior()
             
             if behavior == "good":
                 child.setLocation("Yard")
             elif behavior == "ok":
                 child.setLocation("Principal")
-            else:  # behavior == "bad"
+            else:
                 child.setLocation("Home")
 
     # get all children assigned to school
@@ -168,11 +139,6 @@ def noMoreSad(sadness, money):
         print(f"Spent {money_spent} Dollars to Cheer Up the Salamander.")
 
 def main():
-    # PROBLEM 1
-    test_list1 = [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]
-    test_list1 = [1, 2, 3, 4, 1, 2, 3, 4, 1, 7]
-    print(period(test_list1))
-
     # PROBLEM 2
     test_coins1 = [2, 39]
     print(leastNumCoins(test_coins1))
